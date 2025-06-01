@@ -1,2 +1,3 @@
 # Apps
-- to-do list
+- to-do list using vanilla typescript
+- to-do list using nextjs
