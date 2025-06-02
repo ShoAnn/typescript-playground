@@ -32,6 +32,19 @@ class ToDoList {
 		return newId;
 	}
 
+	getTaskById(id: number): Task | undefined {
+		const task = this.tasks.find(task => task.id === id);
+		return task ? { ...task } : undefined;
+	}
+
+	getCompleted(): Task[] {
+		return this.tasks.filter(task => task.completed).map(task => ({ ...task }))
+	}
+
+	getPending(): Task[] {
+		return this.tasks.filter(task => task.completed === false).map(task => ({ ...task }))
+	}
+
 	addTask(
 		title: string,
 		creationDate: number = Date.now(),
@@ -74,26 +87,24 @@ class ToDoList {
 		console.log(`${taskToUpdate.title} completed.`)
 		return { ...taskToUpdate };
 	}
-}
 
-// const t1: Task = { id: 1, title: 'shopping', completed: false, completionDate: 0 };
-// const t2: Task = { id: 2, title: 'run', completed: false, completionDate: 0 };
-// const t3: Task = { id: 3, title: 'water plants', completed: false, completionDate: 0 };
-//
-// let tdl: Task[] = [t1, t2, t3];
-//
-// console.log(tdl);
-//
-// const newTdl = tdl.map(task => {
-// 	if (task.title === "shopping") {
-// 		const completedTask = completeTask(task);
-// 		return completedTask;
-// 	}
-// 	return task;
-// })
-//
-// console.log(`tdl = `);
-// console.log(tdl);
-// console.log(`newtdl = `);
-// console.log(newTdl);
-// // // end to do list using interface
+	deleteTask(id: number) {
+		let taskToDelete: Task | undefined = undefined;
+		const taskId = this.tasks.findIndex(task => task.id === id);
+
+		if (taskId === -1) {
+			console.warn(`There is no task with id = ${id} in the current list`)
+			return undefined;
+		}
+		taskToDelete = {
+			...this.tasks[taskId]
+		}
+		this.tasks = [
+			...this.tasks.slice(0, taskId),
+			...this.tasks.slice(taskId + 1)
+		]
+
+		console.log(`${taskToDelete.title} deleted.`)
+		return taskToDelete;
+	}
+}
