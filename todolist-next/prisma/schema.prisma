@@ -14,11 +14,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String   @unique
+  tasks     Task[] // Relation: A user can have many tasks
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Task {
   id        Int      @id @default(autoincrement())
-  title     String?
-  // posts     Post[]   // Relation: A user can have many posts
-  completed Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  title     String
+  completed Boolean  @default(false)
+  user      User     @relation(fields: userId, references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
