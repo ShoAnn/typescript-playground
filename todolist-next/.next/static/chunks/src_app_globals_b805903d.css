@@ -203,6 +203,18 @@
     height: 100svh;
   }
 
+  .w-\[75\%\] {
+    width: 75%;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .w-svw {
+    width: 100svw;
+  }
+
   .items-center {
     align-items: center;
   }
@@ -211,9 +223,8 @@
     justify-content: center;
   }
 
-  .antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .text-center {
+    text-align: center;
   }
 }
 

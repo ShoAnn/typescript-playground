@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 68, "column": 0}, "map": {"version":3,"sources":["file:///home/anwarr/project/web/typescript/todolist-next/src/app/api/tasks/route.ts"],"sourcesContent":["import { PrismaClient } from \"@prisma/client\";\nimport { NextResponse } from \"next/server\";\n\nconst prisma = new PrismaClient();\n\nexport async function GET() {\n  try {\n    const users = await prisma.task.findMany()\n    return NextResponse.json(users)\n  } catch (error) {\n    return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 })\n  }\n}\n"],"names":[],"mappings":";;;AAAA;AACA;;;AAEA,MAAM,SAAS,IAAI,6HAAA,CAAA,eAAY;AAExB,eAAe;IACpB,IAAI;QACF,MAAM,QAAQ,MAAM,OAAO,IAAI,CAAC,QAAQ;QACxC,OAAO,gIAAA,CAAA,eAAY,CAAC,IAAI,CAAC;IAC3B,EAAE,OAAO,OAAO;QACd,OAAO,gIAAA,CAAA,eAAY,CAAC,IAAI,CAAC;YAAE,OAAO;QAAwB,GAAG;YAAE,QAAQ;QAAI;IAC7E;AACF","debugId":null}}]
+}

@@ -1,7 +1,9 @@
-export default function TodoList() {
+import TaskList from "./components/TaskList";
+
+export default function HomePage() {
     return (
-        <>
-            <h1>deez</h1>
-        </>
+        <main className="w-full">
+            <TaskList />
+        </main>
     )
 }
