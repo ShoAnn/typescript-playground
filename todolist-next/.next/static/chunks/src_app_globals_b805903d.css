@@ -1,6 +1,8 @@
 /* [project]/src/app/globals.css [app-client] (css) */
 @layer theme {
   :root, :host {
+    --color-gray-400: oklch(70.7% .022 261.325);
+    --color-white: #fff;
     --spacing: .25rem;
     --default-font-family: var(--font-geist-sans);
     --default-mono-font-family: var(--font-geist-mono);
@@ -192,16 +194,8 @@
 @layer components;
 
 @layer utilities {
-  .mb-3 {
-    margin-bottom: calc(var(--spacing) * 3);
-  }
-
-  .mb-4 {
-    margin-bottom: calc(var(--spacing) * 4);
-  }
-
-  .mb-6 {
-    margin-bottom: calc(var(--spacing) * 6);
+  .my-4 {
+    margin-block: calc(var(--spacing) * 4);
   }
 
   .flex {
@@ -216,14 +210,6 @@
     height: 100vh;
   }
 
-  .h-svh {
-    height: 100svh;
-  }
-
-  .w-\[75\%\] {
-    width: 75%;
-  }
-
   .w-\[80\%\] {
     width: 80%;
   }
@@ -236,8 +222,16 @@
     width: 100vw;
   }
 
-  .w-svw {
-    width: 100svw;
+  .cursor-auto {
+    cursor: auto;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .flex-col {
+    flex-direction: column;
   }
 
   .items-center {
@@ -248,8 +242,20 @@
     justify-content: center;
   }
 
-  .pb-6 {
-    padding-bottom: calc(var(--spacing) * 6);
+  .bg-gray-400 {
+    background-color: var(--color-gray-400);
+  }
+
+  .bg-white {
+    background-color: var(--color-white);
+  }
+
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
+
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
   }
 
   .text-center {

@@ -1,17 +1,17 @@
 // lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
-let prisma: PrismaClient;
+// This prevents instantiating a new PrismaClient in development during hot-reloads.
+const prismaClientSingleton = () => {
+  return new PrismaClient();
+};
 
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient();
-} else {
-  // Ensure the prisma instance is re-used during hot-reloading
-  // Prevents too many connections during development
-  if (!global.prisma) {
-    global.prisma = new PrismaClient();
-  }
-  prisma = global.prisma;
+declare global {
+  var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
 }
 
+const prisma = globalThis.prisma ?? prismaClientSingleton();
+
 export default prisma;
+
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma;
