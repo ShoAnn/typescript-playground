@@ -1,8 +1,8 @@
 /* [project]/src/app/globals.css [app-client] (css) */
 @layer theme {
   :root, :host {
+    --color-red-600: oklch(57.7% .245 27.325);
     --color-gray-400: oklch(70.7% .022 261.325);
-    --color-white: #fff;
     --spacing: .25rem;
     --default-font-family: var(--font-geist-sans);
     --default-mono-font-family: var(--font-geist-mono);
@@ -198,8 +198,20 @@
     margin-block: calc(var(--spacing) * 4);
   }
 
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+
   .flex {
     display: flex;
+  }
+
+  .grid {
+    display: grid;
   }
 
   .table {
@@ -218,16 +230,12 @@
     width: 100%;
   }
 
-  .w-screen {
-    width: 100vw;
-  }
-
-  .cursor-auto {
-    cursor: auto;
-  }
-
   .cursor-pointer {
     cursor: pointer;
+  }
+
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .flex-col {
@@ -246,16 +254,24 @@
     background-color: var(--color-gray-400);
   }
 
-  .bg-white {
-    background-color: var(--color-white);
+  .bg-red-600 {
+    background-color: var(--color-red-600);
   }
 
-  .p-3 {
-    padding: calc(var(--spacing) * 3);
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
   }
 
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
+  }
+
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+
+  .pb-3 {
+    padding-bottom: calc(var(--spacing) * 3);
   }
 
   .text-center {

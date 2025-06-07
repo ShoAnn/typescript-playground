@@ -1,7 +1,7 @@
 'use client'
 
 // Your Server Action import remains the same
-import { createTask } from '../actions/action';
+import { createTask, deleteTask } from '../actions/action';
 
 // Define the Task type
 interface Task {
@@ -18,7 +18,7 @@ export default function TaskList({ initialTasks }: { initialTasks: Task[] }) {
     return (
         <div className='w-full flex flex-col items-center justify-center'>
             {/* The form stays the same. When submitted, it will trigger the revalidation */}
-            <form action={createTask}>
+            <form action={createTask} className='w-[80%] grid grid-cols-2 text-center'>
                 <input
                     type="text"
                     name="title"
@@ -31,22 +31,27 @@ export default function TaskList({ initialTasks }: { initialTasks: Task[] }) {
             <table className='w-[80%] text-center my-4'>
                 <thead>
                     <tr>
-                        <th><strong>id</strong></th>
-                        <th><strong>title</strong></th>
-                        <th><strong>status</strong></th>
+                        <th className='pb-3'><strong>id</strong></th>
+                        <th className='pb-3'><strong>title</strong></th>
+                        <th className='pb-3'><strong>status</strong></th>
                     </tr>
                 </thead>
                 <tbody>
                     {/* 3. Map over the prop directly */}
                     {initialTasks.map((task) => (
                         <tr key={task.id}>
-                            <td>{task.id}</td>
-                            <td>{task.title}</td>
-                            <td>{task.completed ? "✅" : "❌"}</td>
+                            <td className='pb-3'>{task.id}</td>
+                            <td className='pb-3'>{task.title}</td>
+                            <td className='pb-3'>{task.completed ? "✅" : "❌"}</td>
+                            <td className='pb-3'>
+                                <form action={deleteTask.bind(null, task.id)}>
+                                    <button type='submit' className='bg-red-600 px-4 cursor-pointer'>Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 }

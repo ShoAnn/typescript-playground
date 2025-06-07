@@ -20,3 +20,16 @@ export async function createTask(data: FormData) {
 	// Revalidate the path to trigger a re-render
 	revalidatePath("/");
 }
+
+export async function deleteTask(id: number) {
+	try {
+		await prisma.task.delete({
+			where: {
+				id
+			}
+		})
+	} catch (error) {
+		console.log(`error deleting task: ${error}`)
+	}
+	revalidatePath("/")
+}
